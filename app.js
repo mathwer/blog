@@ -8,6 +8,8 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+const posts = []
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -17,12 +19,33 @@ app.use(express.static("public"));
 app.get('/', function(req, res){
 
   res.render('home', {
-    paraHome: homeStartingContent
+    paraHome: homeStartingContent,
+    posts: posts
   })
 })
 
+app.get('/about', function(req, res){
+  res.render('about', {
+    paraAbout: aboutContent
+  })
+})
+
+app.get('/contact', function(req, res){
+  res.render('contact', {
+    paraContato: contactContent
+  })
+})
+
+app.get('/compose', function(req, res){
+  res.render('compose')
+})
 
 
+app.post('/compose', function (req, res){
+  const post = {titulo: req.body.titulo, texto: req.body.texto}
+  posts.push(post)
+  res.redirect('/')
+})
 
 app.listen(3000, function() {
   console.log("Servidor rodando na porta 3000");
