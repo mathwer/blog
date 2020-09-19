@@ -19,7 +19,7 @@ app.use(express.static("public"));
 
 
 app.get('/', function(req, res){
-
+  
   res.render('home', {
     paraHome: homeStartingContent,
     posts: posts
@@ -54,22 +54,15 @@ app.post('/compose', function (req, res){
 app.get('/posts/:nomeDoPost', function(req, res){
   const nome = _.lowerCase(req.params.nomeDoPost)
   posts.forEach(function(item){
-    let titulo = _.lowerCase(item.titulo)
-     if(nome === titulo){
+    let tituloPost = _.lowerCase(item.titulo)
+    if(nome === tituloPost){
       console.log('Correspondência encontrada')
+      res.render('post', {titulo: item.titulo, texto: item.texto})   
     }
     else{
       console.log('Not found')
     }
   })
-  
-  // if(req.params.nomeDoPost === posts.titulo){
-  //   console.log('Correspondência Encontrada')
-  // }
-  // else{
-  //   console.log('Não encontrou')
-  // }
-
 })
 
 
