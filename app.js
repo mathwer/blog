@@ -68,21 +68,7 @@ app.post('/compose', function (req, res){
   })
 })
 
-
-
-// app.get('/posts/:nomeDoPost', function(req, res){
-//   const nome = _.lowerCase(req.params.nomeDoPost)
-//   posts.forEach(function(item){
-//     let tituloPost = _.lowerCase(item.titulo)
-//     if(nome === tituloPost){
-//       console.log('Correspondência encontrada')
-//       res.render('post', {titulo: item.titulo, texto: item.texto})   
-//     }
-//     else{
-//       console.log('Not found')
-//     }
-//   })
-// })
+// -------------- Apenas um post / Leia mais
 
 app.get('/posts/:id', function(req, res){
   const id = req.params.id
