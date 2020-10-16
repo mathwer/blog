@@ -3,14 +3,14 @@
 
 <h1>Inicial</h1>
 
-<p> <%= paraHome %> </p>
+<p> <%=paraHome %> </p>
 
 <br>
 
 <% posts.forEach(function(post){ %>
     <h1><%= post.titulo %>  </h1>
     <%let texto = post.texto.substring(0,100) %>
-    <p><%= texto %>...  <a href="/posts/<%=post.titulo%>">Leia mais</a> </p>
+    <p><%= texto %>...  <a href="/posts/<%=post._id%>">Leia mais</a> </p>
 <% }) %>
 
 
